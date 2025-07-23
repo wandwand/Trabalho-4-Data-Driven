@@ -71,6 +71,10 @@ print("X0 shape:", X0.shape)
 print("X1 shape:", X1.shape)
 print("U0 shape:", U0.shape)
 
+print("X0 shape:", X0)
+print("X1 shape:", X1)
+print("U0 shape:", U0)
+
 # Parte (b): persistência
 rank = np.linalg.matrix_rank(U0)
 print("\n=== Parte (b): Persistência ===")
@@ -88,15 +92,18 @@ B_est = Theta[:, n_states:]
 
 print("\n=== Parte (c): Estimação ===")
 print("Theta (A|B):\n", Theta)
-print("\nMatriz A estimada:\n", A_est)
-print("\nMatriz B estimada:\n", B_est)
-print("\n=== Matrizes Reais (Discretizadas) ===")
-print("Matriz A real (Ad):\n", Ad)
-print("\nMatriz B real (Bd):\n", Bd)
-
+#================================================
 # Ganho K (no contexto do enunciado): é [A B]
 K = Theta
 print("\nGanho K = [A B]:\n", K)
+#================================================
+print("\n=== Matrizes Reais (Discretizadas) ===")
+print("Matriz A real (Ad):\n", Ad)
+print("\nMatriz B real (Bd):\n", Bd)
+print("\nMatriz C real (Cd):\n", Cd)
+print("\nMatriz D real (Dd):\n", Dd)
+
+
 
 
 # --- Gráfico das saídas ---
