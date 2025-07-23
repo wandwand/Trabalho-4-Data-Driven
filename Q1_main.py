@@ -90,6 +90,9 @@ print("\n=== Parte (c): Estimação ===")
 print("Theta (A|B):\n", Theta)
 print("\nMatriz A estimada:\n", A_est)
 print("\nMatriz B estimada:\n", B_est)
+print("\n=== Matrizes Reais (Discretizadas) ===")
+print("Matriz A real (Ad):\n", Ad)
+print("\nMatriz B real (Bd):\n", Bd)
 
 # Ganho K (no contexto do enunciado): é [A B]
 K = Theta
