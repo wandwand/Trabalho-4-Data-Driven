@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.linalg import solve_discrete_are
 
 # ============================================
-# Matrsizes do sistema real
+# Matrizes do sistema real
 # ============================================
 A_real = np.array([
     [0.99004983, 0.,         0.,         0.,         0.],
@@ -101,11 +101,11 @@ def analyze_stability(A, B, K):
     eigvals = np.linalg.eigvals(A_cl)
     max_magnitude = np.max(np.abs(eigvals))
     
-    print("\nMalha fechada eigenvalues:")
+    print("\nMalha fechada autovalores:")
     for i, eig in enumerate(eigvals):
         print(f"λ{i+1} = {eig:.4f} (|λ| = {np.abs(eig):.4f})")
-    
-    print(f"\nMagnitude máximade eigenvalues: {max_magnitude:.4f}")
+
+    print(f"\nMagnitude máxima dos autovalores: {max_magnitude:.4f}")
     if max_magnitude < 1:
         print("Sistema é estável (se |λ| < 1)")
     else:
@@ -116,7 +116,7 @@ def analyze_stability(A, B, K):
 print("\nAnálise de Estabilidade do Controlador Inicial:")
 Acl_initial, eig_initial = analyze_stability(A_real, B_real, K_initial)
 
-print("\nLQR Controller Stability Analysis:")
+print("\nAnálise de controle de estabilidade LQR:")
 Acl_lqr, eig_lqr = analyze_stability(A_real, B_real, K_lqr)
 
 # ============================================
@@ -156,13 +156,13 @@ def plot_controls(U, title):
     plt.tight_layout()
 
 def plot_eigenvalues(eigvals, title):
-    """Plotar eigenvalues no plano complexo"""
+    """Plotar autovalores no plano complexo"""
     plt.figure(figsize=(8, 6))
     angles = np.linspace(0, 2*np.pi, 100)
     plt.plot(np.cos(angles), np.sin(angles), 'k--')  # Unit circle
     plt.plot(eigvals.real, eigvals.imag, 'ro', markersize=10)
     
-    # Anotar eigenvalues
+    # Anotar autovalores
     for i, eig in enumerate(eigvals):
         plt.annotate(f'λ{i+1}', (eig.real, eig.imag), 
                      textcoords="offset points", xytext=(5,5), ha='center')
@@ -205,4 +205,4 @@ cost_lqr = calculate_cost(X_lqr, U_lqr, Q, R)
 print("\nComparação de performance:")
 print(f"Custu inicial do controlador: {cost_initial:.4f}")
 print(f"Custo do controlador LQR: {cost_lqr:.4f}")
-print(f"Aprimoramentos: {100*(cost_initial-cost_lqr)/cost_initial:.2f}% reduction")
+print(f"Aprimoramentos: {100*(cost_initial-cost_lqr)/cost_initial:.2f}% redução no custo")
